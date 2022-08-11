@@ -1,0 +1,167 @@
+<head>
+
+    <title>
+        Gravy Recipes
+    </title>
+
+    <style>
+        body{
+            background-color: #d883c7;
+        }
+        .item-container{
+            border: 3px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 400px;
+        }
+        .title{
+            display: flex;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <h1><center>Welcome to Meals ready</center></h1>
+        <h2><center>Menu</center></h2>
+        <br>
+    </div>
+    
+    <div id="container" class="container">
+       <div class="item-container">
+           <h3>saambar</h3>
+           <img width=200px; height=300px; src="sambar.jpg" >
+           <p><b>Ingredients:</b></p>
+           <p>1/2 cup toor dal</p>
+           <p>1/4 tumeric</p>
+           <p>1 tsp oil</p>
+           <p>1 1/2 cup water</p>
+           <p>1/2 onion</p>
+           <p>1 tomato </p>
+           <p>1 carrot </p>
+           <p>5 beans </p>
+           <p>1 potata </p>
+
+           <button class="remove-button">Remove</button>
+       </div>
+
+       <div class="item-container">
+        <h3>Rasam</h3>
+        <img width=200px; height=300px; src="rasam.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>3 chopped tomato </p>
+        <p>1/2 teaspoon cumin seeds</p>
+        <p>1 handful chooped coriander leaves</p>
+        <p>1/2 piece ginger </p>
+        <p>2 cup water</p>
+        <p> 5 curry leaves</p>
+        <p>salt as required</p>
+        <button class="remove-button">Remove</button>
+       </div>
+
+    <div class="item-container">
+        <h3> Vatha Kulambu</h3>
+        <img width=200px; height= 300px; src="vathakulambu.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>1 teaspoon peanut oil</p>
+        <p>4 dried red chillies</p>
+        <p>1 teaspoon urad dal</p>
+        <p>1 teaspon black pepper corn</p>
+        <p>1 teaspoon cumin seeds</p>
+        <p>2 teaspoon coriander seeds</p>
+        <p>2 srigs curry leaves</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>vadai</h3>
+        <img width=200px; src="vadai.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>1 cup urad dal</p>
+        <p>2.5 to 3 cups water for soaking</p>
+        <p>3 to 4 tablespoons water for grinding</p>
+        <p>½ teaspoon cumin seeds</p>
+        <p>½ teaspoon black peppercorns</p>
+        <p>1 tablespoon chopped curry leaves</p>
+        <p>⅓ cup finely chopped onions</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>Potato Curry</h3>
+        <img width=200px; src="potatocurry.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>4 potatoes (medium sized)</p>
+        <p>½ cup chopped onions</p>
+        <p>1 cup chopped tomatoes</p>
+        <p>½ teaspoon finely chopped garlic or 2 small to medium garlic</p>
+        <p>3 tablespoons oil</p>
+        <p>½ teaspoon turmeric powder</p>
+        <p>½ teaspoon cumin powder</p>
+        <p>2 cups water</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>paayasam</h3>
+        <img width=200px; src="paayasam.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>2 tablespoons Ghee</p>
+        <p>12 to 15 cashews</p>
+        <p>2 tablespoon raisins</p>
+        <p>1 cup semiya</p>
+        <p>3.5 cups whole milk</p>
+        <p>4 tablespoons sugar</p>
+        <p>½ teaspoon cardamom powder</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    </div>
+
+    <div style="margin: 20px">
+        <input id="inputbox" type="text">
+        <button>Add Item</button>
+    </div>
+
+</body>
+
+<script>
+    
+    function removeItem(event) {
+        event.target.parentElement.remove()
+    }
+    
+    let removeButtons = document.getElementsByClassName('remove-button')
+
+    for(let i=0;i<removeButtons.length;i++) {
+        removeButtons[i].addEventListener("click",removeItem)
+    }
+        
+    function addItem() {
+        let itemToAdd = document.getElementById('inputbox').value
+        let htmlToAdd = `
+        <div class="item-container">
+            <h3>${itemToAdd}</h3>
+            <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+        </div>`
+
+        let newElement = document.createElement('div')
+        newElement.innerHTML = htmlToAdd
+
+        document.getElementById('container').appendChild(newElement)
+         
+        document.getElementById("container").innerHTML += `
+        <div class="item-container">
+        <div class="title">${itemToAdd}</div>
+        <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+        </div>
+        `
+
+    }
+</script>
